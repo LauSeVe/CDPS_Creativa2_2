@@ -60,6 +60,7 @@ servicesDomain = "" if (os.environ.get("SERVICES_DOMAIN") is None) else "." + os
 detailsHostname = "details" if (os.environ.get("DETAILS_HOSTNAME") is None) else os.environ.get("DETAILS_HOSTNAME")
 ratingsHostname = "ratings" if (os.environ.get("RATINGS_HOSTNAME") is None) else os.environ.get("RATINGS_HOSTNAME")
 reviewsHostname = "reviews" if (os.environ.get("REVIEWS_HOSTNAME") is None) else os.environ.get("REVIEWS_HOSTNAME")
+groupNumber = "group" if (os.environ.get("GROUP_NUMBER") is None) else os.environ.get("GROUP_NUMBER")
 
 flood_factor = 0 if (os.environ.get("FLOOD_FACTOR") is None) else int(os.environ.get("FLOOD_FACTOR"))
 
@@ -249,7 +250,7 @@ def index():
     table = json2html.convert(json=json.dumps(productpage),
                               table_attributes="class=\"table table-condensed table-bordered table-hover\"")
 
-    return render_template('index.html', serviceTable=table)
+    return render_template('index.html', serviceTable=table, groupNumber= groupNumber)
 
 
 @app.route('/health')
@@ -313,7 +314,8 @@ def front():
         product=product,
         details=details,
         reviews=reviews,
-        user=user)
+        user=user,
+        groupNumber=groupNumber)
 
 
 # The API:
