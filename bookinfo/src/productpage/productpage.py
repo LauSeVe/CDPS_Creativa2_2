@@ -315,7 +315,7 @@ def front():
         details=details,
         reviews=reviews,
         user=user,
-        groupNumber=groupNumber)
+        groupNumber="patata")
 
 
 # The API:
